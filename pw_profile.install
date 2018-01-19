@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the minimal installation profile.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pw_profile_install() {
+  $include_files = backdrop_get_path('profile', 'pw_profile') . '/install/*.inc';
+  foreach (glob($include_files) as $file) {
+    include_once $file;
+  }
+
+  // Install modules.
+  pw_profile_install_modules();
+
+  // Setup admin role.
+  /*pw_profile_setup_admin_role();
+
+  // Configure themes.
+  pw_profile_enable_default_themes();
+  pw_profile_configure_themes();
+
+  // Configure content types.
+  pw_profile_add_content_types();
+  pw_profile_configure_content_types();
+
+  // Configure text formats.
+  pw_profile_add_text_formats();
+  pw_profile_configure_text_formats();
+
+  // Configure fields.
+  pw_profile_create_fields();
+  pw_profile_attach_fields();
+  pw_profile_extra_fields();
+
+  // Configure blocks.
+  pw_profile_enable_blocks();
+  pw_profile_configure_blocks();
+
+  // Configure menus.
+  pw_profile_add_menu_items();
+
+  // Configure miscellaneous settings.
+  pw_profile_configure_miscellaneous();
+
+  // Configure permissions.
+  pw_profile_configure_permissions();*/
+}
+
