@@ -17,11 +17,11 @@ function pw_profile_install() {
   pw_profile_install_modules();
 
   // Setup admin role.
-  /*pw_profile_setup_admin_role();
+  pw_profile_setup_admin_role();
 
   // Configure themes.
   pw_profile_enable_default_themes();
-  pw_profile_configure_themes();
+  /*pw_profile_configure_themes();
 
   // Configure content types.
   pw_profile_add_content_types();

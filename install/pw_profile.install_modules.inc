@@ -9,7 +9,7 @@
  */
 function pw_profile_install_modules() {
   module_enable(array(
-    // Core
+    // Core.
     'admin_bar',
     'contextual',
     'dblog',
@@ -29,55 +29,24 @@ function pw_profile_install_modules() {
     'redirect',
     'ckeditor',
     'views_ui',
-    // Contrib
 
-    /*'auto_menutitle',
-    'block_access',
+    // Contrib.
+    'auto_menu_settings',
     'captcha',
-    'copyright_block',
-    'ctools',
+    'copyright_notice',
     'devel',
-    'dialog',
-    'disable_taxonomy_description',
-    'editor',
-    'editor_ckeditor',
-    'emptyparagraphkiller',
-    'entity',
     'extlink',
-    'fancybox',
-    'filefield_paths',
-    'flexslider',
-    'flexslider_views',
-    'imagefield_tokens',
+    'html5_upload',
     'invisimail',
-    'jquery_update',
-    'libraries',
-    'link',
-    'locationmap',
-    'logintoboggan',
-    'manualcrop',
     'menu_admin_per_menu',
     'menu_trail_by_path',
-    'module_filter',
-    'multiupload_filefield_widget',
-    'multiupload_imagefield_widget',
-    'path_alias_xt',
-    'pathauto',
+    'on_the_web',
     'pathologic',
     'pw_module',
     'recaptcha',
-    'simple_pass_reset',
+    'save_draft',
     'simplify',
-    'social_media_links',
     'submitted_by',
-    'superfish',
-    'taxonomy_access_fix',
-    'termcase',
-    'text_format_access',
-    'token',
-    'transliteration',
-    'update_advanced',
-    'views',*/
   ));
 }
 

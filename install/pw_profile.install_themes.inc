@@ -8,14 +8,19 @@
  * Enable default themes.
  */
 function pw_profile_enable_default_themes() {
-  // Enable themes.
-  theme_enable(array(
-    'adminimal',
-  ));
+  $config = config('system.core');
+  $default_theme = 'basis';
+  $admin_theme = 'seven';
 
-  // Set admin theme.
-  variable_set('admin_theme', 'adminimal');
-  variable_set('node_admin_theme', TRUE);
+  theme_enable(array(
+    $default_theme,
+    $admin_theme,
+  ));
+  theme_disable(array('stark'));
+  $config->set('theme_default', $default_theme);
+  $config->set('admin_theme', $admin_theme);
+  $config->set('node_admin_theme', TRUE);
+  $config->save();
 }
 
 /**

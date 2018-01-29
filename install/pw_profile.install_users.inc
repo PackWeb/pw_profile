@@ -8,18 +8,22 @@
  * Setup admin role.
  */
 function pw_profile_setup_admin_role() {
-  $admin_role = array(
-    'name' => 'administrator',
-    'weight' => 5,
-  );
-  $admin_role = (object) $admin_role;
-  user_role_save($admin_role);
+  $t = get_t();
 
-  // Add user 1 to admin role
-  $user_1 = user_load(1);
-  $roles = $user_1->roles;
-  $roles[$admin_role->rid] = 'administrator';
-  user_save($user_1, array('roles' => $roles));
+  // Create admin role.
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->label = $t('Administrator');
+  user_role_save($admin_role);
+  config_set('system.core', 'user_admin_role', '0');
+
+  // Add user 1 to admin role.
+  db_insert('users_roles')
+    ->fields(array(
+      'uid' => 1,
+      'role' => $admin_role->name,
+    ))
+    ->execute();
 }
 
 /**
