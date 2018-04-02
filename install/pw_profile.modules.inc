@@ -38,6 +38,7 @@ function pw_profile_install_modules() {
     'extlink',
     'html5_upload',
     'invisimail',
+    'libraries',
     'menu_admin_per_menu',
     'menu_trail_by_path',
     'on_the_web',
@@ -46,7 +47,8 @@ function pw_profile_install_modules() {
     'recaptcha',
     'save_draft',
     'simplify',
-    'submitted_by',
+    'views_slideshow',
+    'views_slideshow_cycle2',
   ));
 }
 
