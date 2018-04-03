@@ -7,16 +7,23 @@
 /**
  * Configure miscellaneous settings.
  */
-function pw_profile_configure_miscellaneous() {
+function pw_profile_setup_miscellaneous() {
   $t = get_t();
-  ctools_include('export');
 
-  // Views.
-  variable_set('views_ui_show_advanced_help_warning', FALSE);
-  variable_set('views_ui_show_advanced_column', TRUE);
+  // Contact form.
+  $config = config('contact.categories');
+  $categories = $config->get('categories');
+  foreach ($categories as $key => $value) {
+    if ($value['cid'] == 1) {
+      $categories[$key]['category'] = $t('Website enquiry');
+      $categories[$key]['recipients'] = 'info@packweb.com.au';
+    }
+  }
+  $config->set('categories', $categories);
+  $config->save();
 
-  // Administration menu.
-  variable_set('admin_menu_components', array(
+  // Administration bar.
+  /*variable_set('admin_menu_components', array(
     'admin_menu.icon' => TRUE,
     'admin_menu.menu' => TRUE,
     'admin_menu.search' => FALSE,
@@ -186,6 +193,7 @@ function pw_profile_configure_miscellaneous() {
   // Update settings.
   variable_set('update_notify_emails', array('info@packweb.com.au'));
   variable_set('update_notification_threshold', 'security');
+  */
 }
 
 
