@@ -19,21 +19,30 @@ function pw_profile_setup_layouts() {
 
   // Add blocks to Default layout.
   _pw_profile_configure_block($layout, 'system', 'header', 'header_top', array(
-    'menu' => '',
+    'block_settings' => array(
+      'menu' => '',
+    ),
   ));
   _pw_profile_configure_block($layout, 'on_the_web', 'social_links', 'header_top');
   _pw_profile_configure_block($layout, 'system', 'main-menu', 'header_bottom', array(
-    'style' => 'dropdown',
-    'depth' => '0',
+    'title_display' => 'none',
+    'block_settings' => array(
+      'style' => 'dropdown',
+      'depth' => '0',
+    ),
   ));
   _pw_profile_configure_block($layout, 'system', 'breadcrumb', 'above', array(
-    'current' => TRUE,
+    'block_settings' => array(
+      'current' => TRUE,
+    ),
   ));
   _pw_profile_configure_block($layout, 'copyright_notice', 'copyright_notice', 'footer_bottom', array(
-    'title' => '',
-    'body' => array(
-      'value' => $t('Copyright &copy; [site:name], [current-date:custom:Y]. All rights reserved. | <a href="/user/login">Admin</a>'),
-      'format' => 'basic_editor',
+    'block_settings' => array(
+      'title' => '',
+      'body' => array(
+        'value' => $t('Copyright &copy; [site:name], [current-date:custom:Y]. All rights reserved. | <a href="/user/login">Admin</a>'),
+        'format' => 'basic_editor',
+      ),
     ),
   ));
   _pw_profile_configure_block($layout, 'pw_module', 'packweb', 'footer_bottom');
@@ -58,16 +67,16 @@ function pw_profile_setup_layouts() {
  * @param $region
  *   The region to add the block to.
  * @param $settings
- *   Optional. An array of block settings to configure.
+ *   Optional. An array of settings to configure.
  */
 function _pw_profile_configure_block(&$layout, $module, $delta, $region, $settings = array()) {
   // Add block to layout.
   $block = $layout->addBlock($module, $delta, $region);
 
   // Combine block settings.
-  $settings += $layout->content[$block->uuid]->settings['block_settings'];
+  $settings += $layout->content[$block->uuid]->settings;
 
   // Update block with settings.
-  $layout->content[$block->uuid]->settings['block_settings'] = $settings;
+  $layout->content[$block->uuid]->settings = $settings;
 }
 
