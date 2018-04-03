@@ -23,93 +23,39 @@ function pw_profile_setup_miscellaneous() {
   $config->save();
 
   // Administration bar.
-  /*variable_set('admin_menu_components', array(
-    'admin_menu.icon' => TRUE,
-    'admin_menu.menu' => TRUE,
-    'admin_menu.search' => FALSE,
-    'admin_menu.users' => FALSE,
-    'admin_menu.account' => TRUE,
+  $config = config('admin_bar.settings');
+  $components = $config->get('components');
+  $config->set('position_fixed', 1);
+  $config->set('components', array(
+    'admin_bar.icon',
+    'admin_bar.menu',
+    'admin_bar.account',
   ));
+  $config->save();
 
-  // Locationmap.
-  variable_set('locationmap_address', 'Coffs Harbour, NSW, Australia');
-  variable_set('locationmap_zoom', '17');
-  variable_set('locationmap_width', '900');
-  variable_set('locationmap_height', '300');
-  variable_set('locationmap_scroll', FALSE);
+  // Pathologic.
+  config_set('pathologic.settings', 'protocol_style', 'proto-rel');
 
-  // Error logging.
-  variable_set('error_level', '0');
-
-  // jQuery update.
-  variable_set('jquery_update_jquery_version', '1.7');
-
-  // FlexSlider.
-  $optionset = flexslider_optionset_create(array(
-    'name' => 'packweb',
-    'title' => $t('PackWeb'),
-    'options' => array(
-      'animation' => 'slide',
-      'animationSpeed' => 500,
-      'smoothHeight' => TRUE,
-      'slideshowSpeed' => 10000,
-      'controlNav' => FALSE,
-      'keyboard' => FALSE,
-      'pauseOnHover' => TRUE,
-    ),
-  ));
-  flexslider_optionset_save($optionset, TRUE);
+  // File system.
+  config_set('system.core', 'file_transliterate_lowercase', 1);
 
   // Image styles.
-  // Medium.
-  $medium = image_style_load('medium');
-  $medium['label'] = $t('Medium');
-  $medium = image_style_save($medium);
-  $medium_effect = array(
-    'isid' => $medium['isid'],
-    'name' => 'image_scale',
-    'data' => array(
-      'width' => '250',
-      'height' => '250',
-      'upscale' => TRUE,
-    ),
-  );
-  image_effect_save($medium_effect);
-  // Large.
-  $large = image_style_load('large');
-  $large['label'] = $t('Large');
-  $large = image_style_save($large);
-  $large_effect = array(
-    'isid' => $large['isid'],
-    'name' => 'image_scale',
-    'data' => array(
-      'width' => '600',
-      'height' => '600',
-      'upscale' => FALSE,
-    ),
-  );
-  image_effect_save($large_effect);
-  // Slideshow.
-  $slideshow = array(
+  image_style_save(array(
     'name' => 'slideshow',
     'label' => $t('Slideshow'),
-  );
-  $slideshow = image_style_save($slideshow);
-  $slideshow_effect = array(
-    'isid' => $slideshow['isid'],
-    'name' => 'manualcrop_crop_and_scale',
-    'data' => array(
-      'width' => '1200',
-      'height' => '300',
-      'upscale' => TRUE,
-      'respectminimum' => TRUE,
-      'onlyscaleifcrop' => FALSE,
+    'effects' => array(
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '2000',
+          'height' => '400',
+        ),
+      ),
     ),
-  );
-  image_effect_save($slideshow_effect);
+  ));
 
   // Image toolkit.
-  variable_set('image_jpeg_quality', '90');
+  /*variable_set('image_jpeg_quality', '90');
 
   // Account settings.
   variable_set('contact_default_status', FALSE);
