@@ -31,11 +31,9 @@ function pw_profile_install() {
 
   // Configure layouts & blocks.
   pw_profile_setup_layouts();
-  /*pw_profile_enable_blocks();
-  pw_profile_configure_blocks();
 
   // Configure menus.
-  pw_profile_add_menu_items();
+  /*pw_profile_add_menu_items();
 
   // Configure miscellaneous settings.
   pw_profile_configure_miscellaneous();

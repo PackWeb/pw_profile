@@ -53,7 +53,7 @@ function pw_profile_setup_content_types() {
     ),
     'is_new' => TRUE,
   ));
-  pw_profile_configure_simplify('nodes_page', array('menu'));
+  //pw_profile_configure_simplify('nodes_page', array('menu'));
   _pw_profile_configure_view_modes('slideshow_image', array());
 }
 
@@ -180,3 +180,4 @@ function _pw_profile_configure_view_modes($bundle, $view_modes) {
   }
   field_bundle_settings('node', $bundle, $settings);
 }
+

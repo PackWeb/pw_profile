@@ -25,4 +25,3 @@ simplify = "latest"
 views_slideshow = "latest"
 views_slideshow_cycle2 = "latest"
 
-
