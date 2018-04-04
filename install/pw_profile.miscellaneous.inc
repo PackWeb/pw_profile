@@ -55,91 +55,83 @@ function pw_profile_setup_miscellaneous() {
   ));
 
   // Image toolkit.
-  /*variable_set('image_jpeg_quality', '90');
+  config_set('system.core', 'image_jpeg_quality', '90');
 
-  // Account settings.
-  variable_set('contact_default_status', FALSE);
-  variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
-  variable_set('user_mail_register_admin_created_body', "[user:name],\n\nA site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it to your browser:\n\n[user:one-time-login-url]/brief\n\nThis link can only be used once to log in and will lead you to a page where you can set your password.\n\nAfter setting your password, you will be able to log in at [site:login-url] in the future using:\n\nusername: [user:name]\npassword: Your password\n\n--  [site:name] team");
-  variable_set('user_mail_register_no_approval_required_body', "[user:name],\n\nThank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it to your browser:\n\n[user:one-time-login-url]/brief\n\nThis link can only be used once to log in and will lead you to a page where you can set your password.\n\nAfter setting your password, you will be able to log in at [site:login-url] in the future using:\n\nusername: [user:name]\npassword: Your password\n\n--  [site:name] team");
-  variable_set('user_mail_status_activated_body', "[user:name],\n\nYour account at [site:name] has been activated.\n\nYou may now log in by clicking this link or copying and pasting it into your browser:\n\n[user:one-time-login-url]/brief\n\nThis link can only be used once to log in and will lead you to a page where you can set your password.\n\nAfter setting your password, you will be able to log in at [site:login-url] in the future using:\n\nusername: [user:name]\npassword: Your password\n\n--  [site:name] team");
-  variable_set('user_mail_password_reset_body', "[user:name],\n\nA request to reset the password for your account has been made at [site:name].\n\nYou may now log in by clicking this link or copying and pasting it to your browser:\n\n[user:one-time-login-url]/brief\n\nThis link can only be used once to log in and will lead you to a page where you can set your password. It expires after one day and nothing will happen if it's not used.\n\n--  [site:name] team");
-
-  // Captcha.
-  module_load_include('inc', 'captcha');
-  variable_set('captcha_default_challenge', 'recaptcha/reCAPTCHA');
-  captcha_set_form_id_setting('user_login', 'none');
-  captcha_set_form_id_setting('user_login_block', 'none');
-
-  // Regional settings.
-  variable_set('configurable_timezones', FALSE);
-
-  // Date & time.
-  variable_set('date_format_long', 'l, j F Y - g:ia');
-  variable_set('date_format_medium', 'D, d/m/Y - g:ia');
-  variable_set('date_format_short', 'd/m/Y - g:ia');
-
-  // Pathauto.
-  variable_set('pathauto_node_pattern', '[node:title]');
-  variable_set('pathauto_node_page_pattern', '[node:menu-link:parents:join-path]/[node:title]');
-  variable_set('pathauto_node_slideshow_image_pattern', 'slideshow/[node:title]');
-  variable_set('pathauto_transliterate', TRUE);
-  variable_set('pathauto_reduce_ascii', TRUE);
-
-  // Redirect.
-  variable_set('redirect_purge_inactive', '31536000');
-
-  // Site information.
-  variable_set('site_403', 'toboggan/denied');
-
-  // Logintoboggan.
-  variable_set('logintoboggan_login_with_email', '1');
-  variable_set('logintoboggan_confirm_email_at_registration', '1');
-  variable_set('logintoboggan_minimum_password_length', '15');
+  // Date and time formats.
+  $config = config('system.date');
+  $formats = $config->get('formats');
+  $formats['long']['pattern'] = 'l, jS F Y - g:ia';
+  $formats['medium']['pattern'] = 'D, d/m/Y - g:ia';
+  $formats['short']['pattern'] = 'd/m/Y - g:ia';
+  $config->set('formats', $formats);
+  $config->save();
 
   // Cron.
-  variable_set('cron_safe_threshold', '0');
+  config_set('system.core', 'cron_safe_threshold', '0');
+
+  // URL aliases.
+  $config = config('path.settings');
+  $config->set('node_pattern', '[node:title]');
+  $config->set('node_page_pattern', '[node:menu-link:parents:join-path]/[node:title]');
+  $config->set('node_slideshow_image_pattern', 'slideshow/[node:title]');
+  $config->set('transliterate', true);
+  $config->set('reduce_ascii', true);
+  $config->save();
+
+  // URL redirects.
+  config_set('redirect.settings', 'purge_inactive', '31536000');
+
+  // URL settings.
+  config_set('system.core', 'canonical_secure', true);
+
+  // Account settings.
+  config_set('contact.settings', 'contact_default_status', false);
+  config_set('system.core', 'user_pictures', false);
+
+  // Captcha.
+  $config = config('captcha.settings');
+  $config->set('default_challenge', 'recaptcha/reCAPTCHA');
+  $forms = $config->get('captcha_points');
+  $forms['user_register_form']['module'] = 'recaptcha';
+  $forms['user_register_form']['captcha_type'] = 'reCAPTCHA';
+  $forms['contact_site_form'] = array(
+    'form_id' => 'contact_site_form',
+    'module' => 'recaptcha',
+    'captcha_type' => 'reCAPTCHA',
+  );
+  $config->set('captcha_points', $forms);
+  $config->save();
 
   // External links.
-  variable_set('extlink_class', FALSE);
-  variable_set('extlink_mailto_class', FALSE);
-  variable_set('extlink_subdomains', FALSE);
-  variable_set('extlink_target', '_blank');
-
-  // Module filter.
-  variable_set('module_filter_use_switch', FALSE);
-  variable_set('module_filter_track_recent_modules', FALSE);
+  $config = config('extlink.settings');
+  $config->set('class', false);
+  $config->set('mailto_class', false);
+  $config->set('subdomains', false);
+  $config->set('target', '_blank');
+  $config->save();
 
   // Simplify.
-  pw_profile_configure_simplify('nodes_global', array(
+  $config = config('simplify.global');
+  $config->set('nodes', array(
     'author',
     'format',
     'revision',
     'path',
     'redirect',
   ));
-  pw_profile_configure_simplify('users_global', array(
+  $config->set('users', array(
+    'format',
+    'status',
     'contact',
-    'format',
     'redirect',
   ));
-  pw_profile_configure_simplify('taxonomy_global', array(
-    'format',
-    'relations',
-    'path',
-    'redirect',
-  ));
-  pw_profile_configure_simplify('blocks_global', array(
+  $config->set('blocks', array(
     'format',
   ));
+  $config->save();
 
-  // Superfish.
-  variable_set('superfish_number', '1');
-
-  // Update settings.
-  variable_set('update_notify_emails', array('info@packweb.com.au'));
-  variable_set('update_notification_threshold', 'security');
-  */
+  // On The Web settings.
+  config_set('on_the_web.settings', 'type', 'font');
 }
 
 
