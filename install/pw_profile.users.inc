@@ -1,29 +1,28 @@
 <?php
 /**
  * @file
- * Users, roles & permissions configuration.
+ * Users & permissions configuration.
  */
 
 /**
- * Setup admin role.
+ * Configure users.
  */
-function pw_profile_setup_admin_role() {
+function pw_profile_setup_users() {
   $t = get_t();
 
   // Create admin role.
-  $admin_role = new stdClass();
-  $admin_role->name = 'administrator';
-  $admin_role->label = $t('Administrator');
-  user_role_save($admin_role);
+  $role = (object) array(
+    'name' => 'administrator',
+    'label' => $t('Administrator'),
+  );
+  user_role_save($role);
   config_set('system.core', 'user_admin_role', '0');
 
-  // Add user 1 to admin role.
-  db_insert('users_roles')
-    ->fields(array(
-      'uid' => 1,
-      'role' => $admin_role->name,
-    ))
-    ->execute();
+  // Configure User 1.
+  $user = user_load(1);
+  $user->roles[] = $role->name;
+  $user->data['contact'] = 0;
+  $user->save();
 }
 
 /**

@@ -16,8 +16,8 @@ function pw_profile_install() {
   // Install modules.
   pw_profile_install_modules();
 
-  // Setup admin role.
-  pw_profile_setup_admin_role();
+  // Configure users.
+  pw_profile_setup_users();
 
   // Configure themes.
   pw_profile_setup_themes();
