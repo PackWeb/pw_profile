@@ -39,6 +39,6 @@ function pw_profile_install() {
   pw_profile_setup_miscellaneous();
 
   // Configure permissions.
-  //pw_profile_configure_permissions();
+  pw_profile_setup_permissions();
 }
 

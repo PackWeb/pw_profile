@@ -29,37 +29,42 @@ function pw_profile_setup_admin_role() {
 /**
  * Configure permissions.
  */
-function pw_profile_configure_permissions() {
-  // Start with a clean slate.
-  db_delete('role_permission')->execute();
-
+function pw_profile_setup_permissions() {
   // Anonymous.
-  $anonymous = array(
+  $anonymous = config('user.role.anonymous');
+  $permissions = array(
     'access site-wide contact form',
     'use text format basic_editor',
     'access content',
   );
-  pw_profile_grant_permissions('anonymous user', $anonymous);
+  $anonymous->set('permissions', $permissions);
+  $anonymous->save();
 
   // Authenticated.
-  $authenticated = array_merge($anonymous, array());
-  pw_profile_grant_permissions('authenticated user', $authenticated);
+  $authenticated = config('user.role.authenticated');
+  $permissions = array_merge($permissions, array(
+    'skip CAPTCHA',
+    'change own username',
+  ));
+  $authenticated->set('permissions', $permissions);
+  $authenticated->save();
 
   // Administrator.
-  $administrator = array_merge($authenticated, array(
-    'access administration menu',
-    'access the block administration page',
-    'view all blocks',
-    'skip CAPTCHA',
+  $administrator = config('user.role.administrator');
+  $permissions = array_merge($permissions, array(
+    'access administration bar',
     'administer contact forms',
     'access contextual links',
+    'access file overview',
+    'manage files',
+    'delete files',
+    'upload editor images',
     'use text format full_editor',
-    'administer locationmap',
-    'use manualcrop',
     'administer main-menu menu items',
     'administer nodes',
     'access content overview',
     'view own unpublished content',
+    'view any unpublished content',
     'create page content',
     'edit own page content',
     'edit any page content',
@@ -70,30 +75,16 @@ function pw_profile_configure_permissions() {
     'edit any slideshow_image content',
     'delete own slideshow_image content',
     'delete any slideshow_image content',
+    'save draft',
     'access administration pages',
     'view the administration theme',
-    'change own username',
   ));
-  pw_profile_grant_permissions('administrator', $administrator);
-}
+  $administrator->set('permissions', $permissions);
+  $administrator->save();
 
-
-/*** ---------------------------------------------------------------------- ***/
-
-
-/**
- * Grant permissions to a user role.
- *
- * @param $role
- *   The name of the user role to assign permissions to.
- * @param $permissions
- *   An array of machine-readable permissions to assign to the user role.
- */
-function pw_profile_grant_permissions($role, $permissions) {
-  // Load role.
-  $user_role = user_role_load_by_name($role);
-
-  // Grant permissions.
-  user_role_grant_permissions($user_role->rid, $permissions);
+  // Clear the user access cache.
+  // @see user_role_save()
+  backdrop_static_reset('user_roles');
+  backdrop_static_reset('user_access');
 }
 
