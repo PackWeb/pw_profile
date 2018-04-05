@@ -140,30 +140,3 @@ function pw_profile_setup_miscellaneous() {
   $system->save();
 }
 
-
-/*** ---------------------------------------------------------------------- ***/
-
-
-/**
- * Configure Simplify.
- *
- * @param $type
- *   The field type being configured (e.g., 'nodes_global', 'nodes_page').
- * @param $new_fields
- *   An array of fields to hide (e.g., 'format').
- */
-function pw_profile_configure_simplify($type, $new_fields) {
-  // Get current fields.
-  $fields = variable_get('simplify_' . $type, array());
-
-  // Add new fields.
-  foreach ($new_fields as $field) {
-    if (!in_array($field, $fields)) {
-      $fields[] = $field;
-    }
-  }
-
-  // Save fields.
-  variable_set('simplify_' . $type, $fields);
-}
-

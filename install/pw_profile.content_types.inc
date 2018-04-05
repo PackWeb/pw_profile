@@ -53,7 +53,7 @@ function pw_profile_setup_content_types() {
     ),
     'is_new' => TRUE,
   ));
-  //pw_profile_configure_simplify('nodes_page', array('menu'));
+  config_set('simplify.nodes', 'slideshow_image', array('menu'));
   _pw_profile_configure_view_modes('slideshow_image', array());
 }
 
