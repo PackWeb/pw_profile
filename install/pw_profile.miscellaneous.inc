@@ -10,6 +10,9 @@
 function pw_profile_setup_miscellaneous() {
   $t = get_t();
 
+  // Since system.core is often used, access it now and then save it later.
+  $system = config('system.core');
+
   // Contact form.
   $config = config('contact.categories');
   $categories = $config->get('categories');
@@ -37,7 +40,7 @@ function pw_profile_setup_miscellaneous() {
   config_set('pathologic.settings', 'protocol_style', 'proto-rel');
 
   // File system.
-  config_set('system.core', 'file_transliterate_lowercase', 1);
+  $system->set('file_transliterate_lowercase', 1);
 
   // Image styles.
   image_style_save(array(
@@ -55,7 +58,7 @@ function pw_profile_setup_miscellaneous() {
   ));
 
   // Image toolkit.
-  config_set('system.core', 'image_jpeg_quality', '90');
+  $system->set('image_jpeg_quality', '90');
 
   // Date and time formats.
   $config = config('system.date');
@@ -67,7 +70,7 @@ function pw_profile_setup_miscellaneous() {
   $config->save();
 
   // Cron.
-  config_set('system.core', 'cron_safe_threshold', '0');
+  $system->set('cron_safe_threshold', '0');
 
   // URL aliases.
   $config = config('path.settings');
@@ -82,11 +85,11 @@ function pw_profile_setup_miscellaneous() {
   config_set('redirect.settings', 'purge_inactive', '31536000');
 
   // URL settings.
-  config_set('system.core', 'canonical_secure', true);
+  $system->set('canonical_secure', true);
 
   // Account settings.
   config_set('contact.settings', 'contact_default_status', false);
-  config_set('system.core', 'user_pictures', false);
+  $system->set('user_pictures', false);
 
   // Captcha.
   $config = config('captcha.settings');
@@ -132,6 +135,9 @@ function pw_profile_setup_miscellaneous() {
 
   // On The Web settings.
   config_set('on_the_web.settings', 'type', 'font');
+
+  // Save system.core.
+  $system->save();
 }
 
 
