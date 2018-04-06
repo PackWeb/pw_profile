@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Block configuration.
+ * Layout configuration.
  */
 
 /**
@@ -17,6 +17,10 @@ function pw_profile_setup_layouts() {
   $region_mapping = layout_get_legacy_region_mapping($layout->layout_template, $template);
   $layout->setLayoutTemplate($template, $region_mapping);
 
+  // Setup conditions.
+  $condition_front = layout_create_access('front');
+  $condition_front->is_new = TRUE;
+
   // Add blocks to Default layout.
   _pw_profile_configure_block($layout, 'system', 'header', 'header_top', array(
     'block_settings' => array(
@@ -31,6 +35,7 @@ function pw_profile_setup_layouts() {
       'depth' => '0',
     ),
   ));
+  _pw_profile_configure_block($layout, 'views', 'slideshow-block', 'above', array(), array($condition_front));
   _pw_profile_configure_block($layout, 'system', 'breadcrumb', 'above', array(
     'block_settings' => array(
       'current' => TRUE,
@@ -68,15 +73,19 @@ function pw_profile_setup_layouts() {
  *   The region to add the block to.
  * @param $settings
  *   Optional. An array of settings to configure.
+ * @param $conditions
+ *   Optional. An array of LayoutAccess objects.
  */
-function _pw_profile_configure_block(&$layout, $module, $delta, $region, $settings = array()) {
+function _pw_profile_configure_block(&$layout, $module, $delta, $region, $settings = array(), $conditions = array()) {
   // Add block to layout.
   $block = $layout->addBlock($module, $delta, $region);
 
-  // Combine block settings.
-  $settings += $layout->content[$block->uuid]->settings;
+  // Update settings.
+  $layout->content[$block->uuid]->settings = array_merge($layout->content[$block->uuid]->settings, $settings);
 
-  // Update block with settings.
-  $layout->content[$block->uuid]->settings = $settings;
+  // Add conditions.
+  if (!empty($conditions)) {
+    $layout->content[$block->uuid]->conditions = $conditions;
+  }
 }
 
