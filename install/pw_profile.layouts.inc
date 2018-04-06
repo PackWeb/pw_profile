@@ -27,7 +27,13 @@ function pw_profile_setup_layouts() {
       'menu' => '',
     ),
   ));
-  _pw_profile_configure_block($layout, 'on_the_web', 'social_links', 'header_top');
+  _pw_profile_configure_block($layout, 'on_the_web', 'social_links', 'header_top', array(
+    'block_settings' => array(
+      'services' => array(
+        'display' => 'auto',
+      ),
+    ),
+  ));
   _pw_profile_configure_block($layout, 'system', 'main-menu', 'header_bottom', array(
     'title_display' => 'none',
     'block_settings' => array(
