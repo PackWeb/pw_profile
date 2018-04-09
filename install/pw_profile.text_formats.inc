@@ -89,6 +89,14 @@ function pw_profile_setup_text_formats() {
           'settings_source' => 'global',
         ),
       ),
+      // This is needed otherwise certain CKEditor buttons get disabled.
+      // @see https://github.com/backdrop/backdrop-issues/issues/2966
+      'filter_html' => array(
+        'status' => 0,
+        'settings' => array(
+          'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <del> <blockquote> <sup> <sub> <ul> <ol> <li> <a> <img> <table> <thead> <tbody> <tfoot> <tr> <th> <td> <hr>',
+        ),
+      ),
     ),
   ));
 
@@ -124,7 +132,7 @@ function pw_profile_setup_text_formats() {
         'status' => 1,
         'weight' => 0,
         'settings' => array(
-          'allowed_html' => '<p> <br> <a> <strong> <b> <em> <i> <u>',
+          'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <a>',
         ),
       ),
       'invisimail_encode_js_entities' => array(
