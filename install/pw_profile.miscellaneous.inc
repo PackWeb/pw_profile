@@ -13,6 +13,18 @@ function pw_profile_setup_miscellaneous() {
   // Since system.core is often used, access it now and then save it later.
   $system = config('system.core');
 
+  // Appearance.
+  $default_theme = 'basis';
+  $admin_theme = 'seven';
+  theme_enable(array(
+    $default_theme,
+    $admin_theme,
+  ));
+  theme_disable(array('stark'));
+  $system->set('theme_default', $default_theme);
+  $system->set('admin_theme', $admin_theme);
+  $system->set('node_admin_theme', TRUE);
+
   // Contact form.
   $config = config('contact.categories');
   $categories = $config->get('categories');
@@ -24,6 +36,24 @@ function pw_profile_setup_miscellaneous() {
   }
   $config->set('categories', $categories);
   $config->save();
+
+  // Menus.
+  $links = array(
+    array(
+      'link_title' => $t('Home'),
+      'link_path' => '<front>',
+      'weight' => -50,
+    ),
+    array(
+      'link_title' => $t('Contact'),
+      'link_path' => 'contact',
+      'weight' => 50,
+    ),
+  );
+  foreach ($links as $link) {
+    menu_link_save($link);
+  }
+  menu_cache_clear_all();
 
   // Administration bar.
   $config = config('admin_bar.settings');
@@ -53,6 +83,7 @@ function pw_profile_setup_miscellaneous() {
           'width' => '2000',
           'height' => '400',
         ),
+        'weight' => 0,
       ),
     ),
   ));

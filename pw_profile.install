@@ -19,9 +19,6 @@ function pw_profile_install() {
   // Configure users.
   pw_profile_setup_users();
 
-  // Configure themes.
-  pw_profile_setup_themes();
-
   // Configure content types.
   pw_profile_setup_content_types();
   pw_profile_setup_fields();
@@ -31,9 +28,6 @@ function pw_profile_install() {
 
   // Configure layouts & blocks.
   pw_profile_setup_layouts();
-
-  // Configure menus.
-  pw_profile_setup_menus();
 
   // Configure miscellaneous settings.
   pw_profile_setup_miscellaneous();
