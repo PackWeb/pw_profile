@@ -19,7 +19,7 @@ function pw_profile_setup_miscellaneous() {
   foreach ($categories as $key => $value) {
     if ($value['cid'] == 1) {
       $categories[$key]['category'] = $t('Website enquiry');
-      $categories[$key]['recipients'] = 'info@packweb.com.au';
+      $categories[$key]['recipients'] = 'info@packweb.eu';
     }
   }
   $config->set('categories', $categories);

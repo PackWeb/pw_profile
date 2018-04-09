@@ -10,7 +10,7 @@
 function pw_profile_form_install_configure_form_alter(&$form, &$form_state, $form_id) {
   // Set default values for the admin account.
   $form['admin_account']['account']['name']['#default_value'] = 'PackWeb';
-  $form['admin_account']['account']['mail']['#default_value'] = 'info@packweb.com.au';
+  $form['admin_account']['account']['mail']['#default_value'] = 'info@packweb.eu';
 }
 
 /**
