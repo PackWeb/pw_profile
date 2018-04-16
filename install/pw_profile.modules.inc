@@ -19,9 +19,9 @@ function pw_profile_install_modules() {
     'field_ui',
     'image',
     'link',
+    'options', // Required by List.
     'list',
     'number',
-    'options',
     'block',
     'contact',
     'menu',
@@ -49,6 +49,6 @@ function pw_profile_install_modules() {
     'simplify',
     'views_slideshow',
     'views_slideshow_cycle2',
-  ));
+  ), FALSE);
 }
 
