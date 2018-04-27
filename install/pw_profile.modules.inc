@@ -39,6 +39,7 @@ function pw_profile_install_modules() {
     'html5_upload',
     'invisimail',
     'libraries',
+    'maintenance_page',
     'menu_admin_per_menu',
     'menu_trail_by_path',
     'on_the_web',

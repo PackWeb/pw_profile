@@ -10,7 +10,7 @@
 function pw_profile_setup_miscellaneous() {
   $t = get_t();
 
-  // Since system.core is often used, access it now and then save it later.
+  // Since system.core is used often, access it now and then save it later.
   $system = config('system.core');
 
   // Appearance.
