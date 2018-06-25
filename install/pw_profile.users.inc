@@ -59,6 +59,7 @@ function pw_profile_setup_permissions() {
     'delete files',
     'upload editor images',
     'use text format full_editor',
+    'use manualcrop',
     'administer main-menu menu items',
     'administer nodes',
     'access content overview',

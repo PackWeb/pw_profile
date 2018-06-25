@@ -17,6 +17,7 @@ function pw_profile_setup_content_types() {
     'name' => $t('Page'),
     'description' => $t("A simple page with a menu link, such as an 'About us' page."),
     'settings' => array(
+      'scheduling_enabled' => FALSE,
       'sticky_enabled' => FALSE,
       'promote_enabled' => FALSE,
       'draft_enabled' => TRUE,
@@ -43,6 +44,7 @@ function pw_profile_setup_content_types() {
     'description' => $t("An image to display in the slideshow, with an optional link to another page/URL."),
     'help' => $t("The Title is only used to identify this image in the admin interface."),
     'settings' => array(
+      'scheduling_enabled' => FALSE,
       'sticky_enabled' => FALSE,
       'promote_enabled' => FALSE,
       'draft_enabled' => TRUE,
@@ -139,6 +141,12 @@ function pw_profile_setup_fields() {
       'weight' => 0,
       'settings' => array(
         'progress_indicator' => 'bar',
+        'manualcrop_enable' => TRUE,
+        'manualcrop_maximize_default_crop_area' => TRUE,
+        'manualcrop_styles_mode' => 'include',
+        'manualcrop_styles_list' => array(
+          'slideshow' => 'slideshow',
+        ),
       ),
     ),
     'display' => array(

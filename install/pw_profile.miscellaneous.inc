@@ -75,10 +75,12 @@ function pw_profile_setup_miscellaneous() {
     'label' => $t('Slideshow'),
     'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => '2000',
           'height' => '400',
+          'upscale' => TRUE,
+          'respectminimum' => TRUE,
         ),
         'weight' => 0,
       ),
