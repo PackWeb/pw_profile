@@ -33,3 +33,11 @@ function pw_profile_final_setup(&$install_state) {
   $user->save();
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter() for node_type_form.
+ */
+function pw_profile_form_node_type_form_alter(&$form, &$form_state, $form_id) {
+  // Disable creation of the default Body field.
+  $form['body']['#value'] = FALSE;
+}
+
