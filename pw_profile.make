@@ -25,3 +25,7 @@ simplify = "latest"
 views_slideshow = "latest"
 views_slideshow_cycle2 = "latest"
 
+[libraries]
+; @see https://github.com/backdrop-contrib/drush/issues/134
+;http://malsup.github.io/min/jquery.cycle2.min.js
+
