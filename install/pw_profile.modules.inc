@@ -43,7 +43,6 @@ function pw_profile_install_modules() {
     'menu_admin_per_menu',
     'menu_trail_by_path',
     'on_the_web',
-    'pathologic',
     'pw_module',
     'recaptcha',
     'save_draft',

@@ -66,9 +66,6 @@ function pw_profile_setup_miscellaneous() {
   ));
   $config->save();
 
-  // Pathologic.
-  config_set('pathologic.settings', 'protocol_style', 'proto-rel');
-
   // File system.
   $system->set('file_transliterate_lowercase', 1);
 

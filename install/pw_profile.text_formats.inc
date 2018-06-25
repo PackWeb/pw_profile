@@ -82,13 +82,6 @@ function pw_profile_setup_text_formats() {
         'status' => 1,
         'weight' => 5,
       ),
-      'pathologic' => array(
-        'status' => 1,
-        'weight' => 6,
-        'settings' => array(
-          'settings_source' => 'global',
-        ),
-      ),
       // This is needed otherwise certain CKEditor buttons get disabled.
       // @see https://github.com/backdrop/backdrop-issues/issues/2966
       'filter_html' => array(
@@ -154,13 +147,6 @@ function pw_profile_setup_text_formats() {
         'status' => 1,
         'weight' => 4,
       ),
-      'pathologic' => array(
-        'status' => 1,
-        'weight' => 5,
-        'settings' => array(
-          'settings_source' => 'global',
-        ),
-      ),
     ),
   ));
 
@@ -187,13 +173,6 @@ function pw_profile_setup_text_formats() {
       'filter_autop' => array(
         'status' => 1,
         'weight' => 3,
-      ),
-      'pathologic' => array(
-        'status' => 1,
-        'weight' => 4,
-        'settings' => array(
-          'settings_source' => 'global',
-        ),
       ),
     ),
   ));
