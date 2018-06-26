@@ -147,11 +147,11 @@
             "empty_zero": 0,
             "hide_alter_empty": 1,
             "click_sort_column": "fid",
-            "type": "image",
+            "type": "srcset_image",
             "settings": {
-              "image_style": "slideshow",
-              "image_link": "",
-              "image_float": ""
+              "srcset_image_set": "slideshow",
+              "srcset_image_sizes": "100vw",
+              "srcset_image_link": ""
             },
             "group_column": "",
             "group_columns": [],

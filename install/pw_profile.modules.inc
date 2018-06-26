@@ -50,6 +50,7 @@ function pw_profile_install_modules() {
     'recaptcha',
     'save_draft',
     'simplify',
+    'srcset_image',
     'views_slideshow',
     'views_slideshow_cycle2',
   ), FALSE);

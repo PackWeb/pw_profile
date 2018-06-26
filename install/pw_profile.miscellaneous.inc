@@ -71,6 +71,72 @@ function pw_profile_setup_miscellaneous() {
 
   // Image styles.
   image_style_save(array(
+    'name' => '1500w',
+    'label' => $t('1500w'),
+    'effects' => array(
+      array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'slideshow',
+          'apply_all_effects' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '1500',
+          'height' => '400',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  ));
+  image_style_save(array(
+    'name' => '1000w',
+    'label' => $t('1000w'),
+    'effects' => array(
+      array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'slideshow',
+          'apply_all_effects' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '1000',
+          'height' => '400',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  ));
+  image_style_save(array(
+    'name' => '500w',
+    'label' => $t('500w'),
+    'effects' => array(
+      array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'slideshow',
+          'apply_all_effects' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => '500',
+          'height' => '400',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  ));
+  image_style_save(array(
     'name' => 'slideshow',
     'label' => $t('Slideshow'),
     'effects' => array(
@@ -81,11 +147,28 @@ function pw_profile_setup_miscellaneous() {
           'height' => '400',
           'upscale' => TRUE,
           'respectminimum' => TRUE,
+          'onlyscaleifcrop' => FALSE,
+          'style_name' => 'slideshow',
         ),
         'weight' => 0,
       ),
     ),
   ));
+
+  // srcset image.
+  $config = config('srcset_image.sets');
+  $slideshow_set = array(
+    'name' => $t('Slideshow'),
+    'machine_name' => 'slideshow',
+    'image_styles' => array(
+      'slideshow',
+      '1500w',
+      '1000w',
+      '500w',
+    ),
+  );
+  $config->set('slideshow', $slideshow_set);
+  $config->save();
 
   // Image toolkit.
   $system->set('image_jpeg_quality', '90');

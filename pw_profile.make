@@ -25,6 +25,7 @@ on_the_web = "latest"
 recaptcha = "latest"
 save_draft = "latest"
 simplify = "latest"
+srcset_image = "latest"
 views_slideshow = "latest"
 views_slideshow_cycle2 = "latest"
 
