@@ -182,6 +182,25 @@ function pw_profile_setup_miscellaneous() {
   $config->set('formats', $formats);
   $config->save();
 
+  // XML sitemap.
+  $config = config('xmlsitemap.settings');
+  $config->set('engines', array(
+    'bing' => 'bing',
+    'google' => 'google',
+  ));
+  $config->set('engines_minimum_lifetime', '86400');
+  $config->set('engines_submit_updated', TRUE);
+  $config->set('minimum_lifetime', '86400');
+  $config->set('settings_menu_link_main-menu', array(
+    'status' => '1',
+    'priority' => '0.5',
+  ));
+  $config->set('settings_node_page', array(
+    'status' => '1',
+    'priority' => '0.5',
+  ));
+  $config->save();
+
   // Cron.
   $system->set('cron_safe_threshold', '0');
 

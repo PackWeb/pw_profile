@@ -48,11 +48,16 @@ function pw_profile_install_modules() {
     'on_the_web',
     'pw_module',
     'recaptcha',
+    'remove_generator',
     'save_draft',
     'simplify',
     'srcset_image',
     'views_slideshow',
     'views_slideshow_cycle2',
+    'xmlsitemap',
+    'xmlsitemap_engines',
+    'xmlsitemap_menu',
+    'xmlsitemap_node',
   ), FALSE);
 }
 

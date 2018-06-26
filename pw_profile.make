@@ -23,11 +23,13 @@ menu_trail_by_path = "latest"
 on_the_web = "latest"
 ;pw_module
 recaptcha = "latest"
+remove_generator = "latest"
 save_draft = "latest"
 simplify = "latest"
 srcset_image = "latest"
 views_slideshow = "latest"
 views_slideshow_cycle2 = "latest"
+xmlsitemap = "latest"
 
 [libraries]
 ; @see https://github.com/backdrop-contrib/drush/issues/134
