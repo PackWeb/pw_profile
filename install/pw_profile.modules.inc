@@ -49,6 +49,7 @@ function pw_profile_install_modules() {
     'pw_module',
     'recaptcha',
     'remove_generator',
+    'responsive_favicons',
     'save_draft',
     'simplify',
     'srcset_image',

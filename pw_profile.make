@@ -24,6 +24,7 @@ on_the_web = "latest"
 ;pw_module
 recaptcha = "latest"
 remove_generator = "latest"
+responsive_favicons = "latest"
 save_draft = "latest"
 simplify = "latest"
 srcset_image = "latest"
