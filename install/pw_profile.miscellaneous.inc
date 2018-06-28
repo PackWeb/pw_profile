@@ -83,10 +83,11 @@ function pw_profile_setup_miscellaneous() {
         'weight' => 0,
       ),
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
           'width' => '1500',
-          'height' => '400',
+          'height' => '',
+          'upscale' => FALSE,
         ),
         'weight' => 0,
       ),
@@ -105,10 +106,11 @@ function pw_profile_setup_miscellaneous() {
         'weight' => 0,
       ),
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
           'width' => '1000',
-          'height' => '400',
+          'height' => '',
+          'upscale' => FALSE,
         ),
         'weight' => 0,
       ),
@@ -127,10 +129,11 @@ function pw_profile_setup_miscellaneous() {
         'weight' => 0,
       ),
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
           'width' => '500',
-          'height' => '400',
+          'height' => '',
+          'upscale' => FALSE,
         ),
         'weight' => 0,
       ),
