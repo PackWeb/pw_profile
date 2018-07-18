@@ -71,8 +71,8 @@ function pw_profile_setup_miscellaneous() {
 
   // Image styles.
   image_style_save(array(
-    'name' => '1500w',
-    'label' => $t('1500w'),
+    'name' => 'slideshow_1500w',
+    'label' => $t('Slideshow 1500w'),
     'effects' => array(
       array(
         'name' => 'manualcrop_reuse',
@@ -94,8 +94,8 @@ function pw_profile_setup_miscellaneous() {
     ),
   ));
   image_style_save(array(
-    'name' => '1000w',
-    'label' => $t('1000w'),
+    'name' => 'slideshow_1000w',
+    'label' => $t('Slideshow 1000w'),
     'effects' => array(
       array(
         'name' => 'manualcrop_reuse',
@@ -117,8 +117,8 @@ function pw_profile_setup_miscellaneous() {
     ),
   ));
   image_style_save(array(
-    'name' => '500w',
-    'label' => $t('500w'),
+    'name' => 'slideshow_500w',
+    'label' => $t('Slideshow 500w'),
     'effects' => array(
       array(
         'name' => 'manualcrop_reuse',
@@ -165,9 +165,9 @@ function pw_profile_setup_miscellaneous() {
     'machine_name' => 'slideshow',
     'image_styles' => array(
       'slideshow',
-      '1500w',
-      '1000w',
-      '500w',
+      'slideshow_1500w',
+      'slideshow_1000w',
+      'slideshow_500w',
     ),
   );
   $config->set('slideshow', $slideshow_set);
