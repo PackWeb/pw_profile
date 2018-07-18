@@ -3,7 +3,7 @@
 ;
 
 [core]
-core = "latest"
+;core = "latest"
 
 [modules]
 auto_menu_settings = "latest"
