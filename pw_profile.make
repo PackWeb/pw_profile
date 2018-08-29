@@ -21,6 +21,7 @@ manualcrop = "latest"
 menu_admin_per_menu = "latest"
 menu_trail_by_path = "latest"
 on_the_web = "latest"
+pathologic = "latest"
 ;pw_module
 recaptcha = "latest"
 remove_generator = "latest"

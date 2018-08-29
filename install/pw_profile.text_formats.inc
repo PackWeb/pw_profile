@@ -55,32 +55,39 @@ function pw_profile_setup_text_formats() {
       ),
     ),
     'filters' => array(
-      'invisimail_encode_js_entities' => array(
-        'status' => 1,
-        'weight' => 0,
-        'settings' => array(
-          'link' => TRUE,
-        ),
-      ),
       'filter_url' => array(
         'status' => 1,
-        'weight' => 1,
+        'weight' => 0,
       ),
       'filter_autop' => array(
         'status' => 1,
-        'weight' => 2,
+        'weight' => 1,
       ),
       'filter_image_caption' => array(
         'status' => 1,
-        'weight' => 3,
+        'weight' => 2,
       ),
       'filter_image_align' => array(
         'status' => 1,
-        'weight' => 4,
+        'weight' => 3,
       ),
       'filter_htmlcorrector' => array(
         'status' => 1,
+        'weight' => 4,
+      ),
+      'pathologic' => array(
+        'status' => 1,
         'weight' => 5,
+        'settings' => array(
+          'settings_source' => 'global',
+        ),
+      ),
+      'invisimail_encode_js_entities' => array(
+        'status' => 1,
+        'weight' => 6,
+        'settings' => array(
+          'link' => TRUE,
+        ),
       ),
       // This is needed otherwise certain CKEditor buttons get disabled.
       // @see https://github.com/backdrop/backdrop-issues/issues/2966
@@ -128,24 +135,31 @@ function pw_profile_setup_text_formats() {
           'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <a>',
         ),
       ),
-      'invisimail_encode_js_entities' => array(
-        'status' => 1,
-        'weight' => 1,
-        'settings' => array(
-          'link' => TRUE,
-        ),
-      ),
       'filter_url' => array(
         'status' => 1,
-        'weight' => 2,
+        'weight' => 1,
       ),
       'filter_autop' => array(
         'status' => 1,
-        'weight' => 3,
+        'weight' => 2,
       ),
       'filter_htmlcorrector' => array(
         'status' => 1,
+        'weight' => 3,
+      ),
+      'pathologic' => array(
+        'status' => 1,
         'weight' => 4,
+        'settings' => array(
+          'settings_source' => 'global',
+        ),
+      ),
+      'invisimail_encode_js_entities' => array(
+        'status' => 1,
+        'weight' => 5,
+        'settings' => array(
+          'link' => TRUE,
+        ),
       ),
     ),
   ));
@@ -155,24 +169,31 @@ function pw_profile_setup_text_formats() {
     'format' => 'plain_text',
     'name' => $t('No editor'),
     'filters' => array(
-      'invisimail_encode_js_entities' => array(
-        'status' => 1,
-        'weight' => 0,
-        'settings' => array(
-          'link' => TRUE,
-        ),
-      ),
       'filter_html_escape' => array(
         'status' => 1,
-        'weight' => 1,
+        'weight' => 0,
       ),
       'filter_url' => array(
         'status' => 1,
-        'weight' => 2,
+        'weight' => 1,
       ),
       'filter_autop' => array(
         'status' => 1,
+        'weight' => 2,
+      ),
+      'pathologic' => array(
+        'status' => 1,
         'weight' => 3,
+        'settings' => array(
+          'settings_source' => 'global',
+        ),
+      ),
+      'invisimail_encode_js_entities' => array(
+        'status' => 1,
+        'weight' => 4,
+        'settings' => array(
+          'link' => TRUE,
+        ),
       ),
     ),
   ));
