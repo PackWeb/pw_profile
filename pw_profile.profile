@@ -41,3 +41,33 @@ function pw_profile_form_node_type_form_alter(&$form, &$form_state, $form_id) {
   $form['body']['#value'] = FALSE;
 }
 
+/**
+ * Implements hook_tokens_alter().
+ */
+function pw_profile_tokens_alter(array &$replacements, array $context) {
+  if ($context['type'] == 'node' && !empty($context['data']['node'])) {
+    $node = $context['data']['node'];
+
+    // Replace 'node:summary' token with 'field_body' value.
+    if (isset($context['tokens']['summary']) && isset($node->field_body)) {
+      $body = field_get_items('node', $node, 'field_body');
+
+      if (!empty($body[0]['safe_summary'])) {
+        $replacements[$context['tokens']['summary']] = $body[0]['safe_summary'];
+      }
+      elseif (!empty($body[0]['safe_value'])) {
+        $replacements[$context['tokens']['summary']] = text_summary($body[0]['safe_value'], 'full_editor');
+      }
+    }
+
+    // Replace 'node:body' token with 'field_body' value.
+    if (isset($context['tokens']['body']) && isset($node->field_body)) {
+      $body = field_get_items('node', $node, 'field_body');
+
+      if (!empty($body[0]['safe_value'])) {
+        $replacements[$context['tokens']['body']] = $body[0]['safe_value'];
+      }
+    }
+  }
+}
+
