@@ -8,9 +8,9 @@
  * Implements hook_install().
  */
 function pw_profile_install() {
-  $include_files = backdrop_get_path('profile', 'pw_profile') . '/install/*.inc';
-  foreach (glob($include_files) as $file) {
-    include_once $file;
+  $files = backdrop_get_path('profile', 'pw_profile') . '/install/*.inc';
+  foreach (glob($files) as $file) {
+    require_once $file;
   }
 
   // Install modules.
@@ -35,4 +35,3 @@ function pw_profile_install() {
   // Configure permissions.
   pw_profile_setup_permissions();
 }
-

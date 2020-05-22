@@ -87,4 +87,3 @@ function pw_profile_setup_permissions() {
   backdrop_static_reset('user_roles');
   backdrop_static_reset('user_access');
 }
-

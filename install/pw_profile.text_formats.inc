@@ -198,4 +198,3 @@ function pw_profile_setup_text_formats() {
     ),
   ));
 }
-

@@ -2,4 +2,3 @@ name = PackWeb
 description = Configure Backdrop for a new PackWeb site.
 backdrop = 1.x
 exclusive = TRUE
-

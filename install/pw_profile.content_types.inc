@@ -188,4 +188,3 @@ function _pw_profile_configure_view_modes($bundle, $view_modes) {
   }
   field_bundle_settings('node', $bundle, $settings);
 }
-

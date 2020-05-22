@@ -36,4 +36,3 @@ xmlsitemap = "latest"
 [libraries]
 ; @see https://github.com/backdrop-contrib/drush/issues/134
 ;http://malsup.github.io/min/jquery.cycle2.min.js
-

@@ -94,4 +94,3 @@ function _pw_profile_configure_block(&$layout, $module, $delta, $region, $settin
     $layout->content[$block->uuid]->conditions = $conditions;
   }
 }
-

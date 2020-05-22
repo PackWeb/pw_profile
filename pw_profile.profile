@@ -32,4 +32,3 @@ function pw_profile_final_setup(&$install_state) {
   $user->timezone = 'Europe/Tallinn';
   $user->save();
 }
-

@@ -277,4 +277,3 @@ function pw_profile_setup_miscellaneous() {
   // Save system.core.
   $system->save();
 }
-

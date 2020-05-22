@@ -62,4 +62,3 @@ function pw_profile_install_modules() {
     'xmlsitemap_node',
   ), FALSE);
 }
-
