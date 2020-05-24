@@ -1,20 +1,20 @@
 <?php
 /**
  * @file
- * Install, update and uninstall functions for the minimal installation profile.
+ * Install, update and uninstall functions for the PackWeb install profile.
  */
 
 /**
  * Implements hook_install().
  */
 function pw_profile_install() {
-  $files = backdrop_get_path('profile', 'pw_profile') . '/install/*.inc';
+  $files = backdrop_get_path('profile', 'pw_profile') . '/includes/*.inc';
   foreach (glob($files) as $file) {
     require_once $file;
   }
 
   // Install modules.
-  pw_profile_install_modules();
+  pw_profile_install_modules($projects);
 
   // Configure users.
   pw_profile_setup_users();

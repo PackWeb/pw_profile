@@ -8,7 +8,6 @@
  * Setup content types.
  */
 function pw_profile_setup_content_types() {
-  module_load_include('inc', 'pw_profile', 'pw_profile.install_miscellaneous');
   $t = get_t();
 
   // Page.
