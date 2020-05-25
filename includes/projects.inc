@@ -66,6 +66,16 @@ $projects = array(
       ),
     ),
   ),
+  'layouts' => array(
+    'pw_layout' => array(
+      '#git' => 'git@github.com:PackWeb/pw_layout.git',
+    ),
+  ),
+  'themes' => array(
+    'pw_theme' => array(
+      '#git' => 'git@github.com:PackWeb/pw_theme.git',
+    ),
+  ),
 );
 
 

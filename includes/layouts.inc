@@ -13,9 +13,12 @@ function pw_profile_setup_layouts() {
 
   // Change the template of the Default layout.
   $layout = layout_load('default', TRUE);
-  $template = 'pw_layout';
-  $region_mapping = layout_get_legacy_region_mapping($layout->layout_template, $template);
-  $layout->setLayoutTemplate($template, $region_mapping);
+  $layout->setLayoutTemplate('pw_layout', array(
+    'header' => FALSE,
+    'top' => FALSE,
+    'content' => FALSE,
+    'footer' => FALSE,
+  ));
 
   // Setup conditions.
   $condition_front = layout_create_access('front');
@@ -47,6 +50,11 @@ function pw_profile_setup_layouts() {
       'current' => TRUE,
     ),
   ));
+  _pw_profile_configure_block($layout, 'system', 'page_components:messages', 'above');
+  _pw_profile_configure_block($layout, 'system', 'page_components:title', 'content');
+  _pw_profile_configure_block($layout, 'system', 'page_components:tabs', 'content');
+  _pw_profile_configure_block($layout, 'system', 'page_components:action_links', 'content');
+  _pw_profile_configure_block($layout, 'system', 'main', 'content');
   _pw_profile_configure_block($layout, 'copyright_notice', 'copyright_notice', 'footer_bottom', array(
     'block_settings' => array(
       'title' => '',
