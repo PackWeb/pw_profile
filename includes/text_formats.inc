@@ -29,7 +29,7 @@ function pw_profile_setup_text_formats() {
         array(
           array(
             'name' => $t('Formatting'),
-            'items' => array('Format', 'Bold', 'Italic', 'Underline', 'Strike', '-', 'Blockquote', 'Superscript', 'Subscript'),
+            'items' => array('Format', 'Bold', 'Italic', 'Underline', 'Strike', '-', 'Blockquote', 'Superscript', 'Subscript', 'HorizontalRule'),
           ),
           array(
             'name' => $t('Lists'),
@@ -37,7 +37,7 @@ function pw_profile_setup_text_formats() {
           ),
           array(
             'name' => $t('Alignment'),
-            'items' => array('JustifyLeft', 'JustifyCenter', 'JustifyRight'),
+            'items' => array('JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'),
           ),
           array(
             'name' => $t('Linking'),
@@ -49,7 +49,7 @@ function pw_profile_setup_text_formats() {
           ),
           array(
             'name' => $t('Tools'),
-            'items' => array('HorizontalRule', 'RemoveFormat', 'Source'),
+            'items' => array('RemoveFormat', 'Source'),
           ),
         ),
       ),
@@ -94,7 +94,7 @@ function pw_profile_setup_text_formats() {
       'filter_html' => array(
         'status' => 0,
         'settings' => array(
-          'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <del> <blockquote> <sup> <sub> <ul> <ol> <li> <a> <img> <table> <thead> <tbody> <tfoot> <tr> <th> <td> <hr>',
+          'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <del> <blockquote> <sup> <sub> <hr> <ul> <ol> <li> <a> <img> <table> <thead> <tbody> <tfoot> <tr> <th> <td>',
         ),
       ),
     ),
@@ -118,7 +118,11 @@ function pw_profile_setup_text_formats() {
         array(
           array(
             'name' => $t('Formatting'),
-            'items' => array('Bold', 'Italic', 'Underline'),
+            'items' => array('Bold', 'Italic', 'Underline', 'Strike'),
+          ),
+          array(
+            'name' => $t('Linking'),
+            'items' => array('BackdropLink', 'BackdropUnlink'),
           ),
           array(
             'name' => $t('Tools'),
@@ -132,7 +136,7 @@ function pw_profile_setup_text_formats() {
         'status' => 1,
         'weight' => 0,
         'settings' => array(
-          'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <a>',
+          'allowed_html' => '<p> <br> <strong> <b> <em> <i> <span> <u> <del> <a>',
         ),
       ),
       'filter_url' => array(

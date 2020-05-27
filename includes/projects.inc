@@ -46,13 +46,15 @@ $projects = array(
       'manualcrop' => array(),
       'menu_admin_per_menu' => array(),
       'menu_trail_by_path' => array(),
+      'metatag' => array(
+        'metatag_opengraph' => array(),
+      ),
       'on_the_web' => array(),
       'pathologic' => array(),
       'pw_module' => array(
         '#git' => 'git@github.com:PackWeb/pw_module.git',
       ),
       'recaptcha' => array(),
-      'remove_generator' => array(),
       'responsive_favicons' => array(),
       'save_draft' => array(),
       'simplify' => array(),

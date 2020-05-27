@@ -66,9 +66,6 @@ function pw_profile_setup_miscellaneous() {
   ));
   $config->save();
 
-  // Pathologic.
-  config_set('pathologic.settings', 'protocol_style', 'proto-rel');
-
   // File system.
   $system->set('file_transliterate_lowercase', 1);
 
@@ -253,22 +250,22 @@ function pw_profile_setup_miscellaneous() {
 
   // Simplify.
   $config = config('simplify.global');
-  $config->set('nodes', array(
+  $config->set('nodes', backdrop_map_assoc(array(
     'author',
     'format',
     'revision',
     'path',
     'redirect',
-  ));
-  $config->set('users', array(
+  )));
+  $config->set('users', backdrop_map_assoc(array(
     'format',
     'status',
     'contact',
     'redirect',
-  ));
-  $config->set('blocks', array(
+  )));
+  $config->set('blocks', backdrop_map_assoc(array(
     'format',
-  ));
+  )));
   $config->save();
 
   // On The Web settings.

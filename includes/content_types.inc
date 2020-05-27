@@ -22,7 +22,7 @@ function pw_profile_setup_content_types() {
       'draft_enabled' => TRUE,
       'skip_required' => TRUE,
       'revision_enabled' => FALSE,
-      'auto_menu_settings_default' => TRUE,
+      'menu_default' => TRUE,
       'menu_options' => array('main-menu'),
       'auto_menu_settings_fields' => array(
         'provide',
@@ -51,10 +51,11 @@ function pw_profile_setup_content_types() {
       'revision_enabled' => FALSE,
       'node_submitted' => FALSE,
       'node_user_picture' => FALSE,
+      'hidden_path' => TRUE,
     ),
     'is_new' => TRUE,
   ));
-  config_set('simplify.nodes', 'slideshow_image', array('menu'));
+  config_set('simplify.nodes', 'slideshow_image', backdrop_map_assoc(array('menu')));
   _pw_profile_configure_view_modes('slideshow_image', array());
 }
 
@@ -105,6 +106,7 @@ function pw_profile_setup_fields() {
     'entity_type' => 'node',
     'bundle' => 'slideshow_image',
     'settings' => array(
+      'validate_url' => FALSE,
       'title' => 'none',
     ),
     'widget' => array(
