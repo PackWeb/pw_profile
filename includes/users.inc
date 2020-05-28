@@ -61,6 +61,7 @@ function pw_profile_setup_permissions() {
     'manage files',
     'delete files',
     'upload editor images',
+    'upload editor files',
     'use text format full_editor',
     'use manualcrop',
     'administer main-menu menu items',

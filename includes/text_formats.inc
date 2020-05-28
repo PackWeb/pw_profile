@@ -25,6 +25,12 @@ function pw_profile_setup_text_formats() {
           'height' => '1200',
         ),
       ),
+      'file_upload' => array(
+        'status' => 1,
+        'directory' => 'files',
+        'max_size' => '5 MB',
+        'file_extensions' => 'pdf',
+      ),
       'toolbar' => array(
         array(
           array(
