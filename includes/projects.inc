@@ -33,8 +33,8 @@ $projects = array(
       'views_ui',
     ),
     'contrib' => array(
+      'antibot' => array(),
       'auto_menu_settings' => array(),
-      'captcha' => array(),
       'copyright_notice' => array(),
       'devel' => array(),
       'extlink' => array(),
@@ -54,7 +54,6 @@ $projects = array(
       'pw_module' => array(
         '#git' => 'git@github.com:PackWeb/pw_module.git',
       ),
-      'recaptcha' => array(),
       'responsive_favicons' => array(),
       'save_draft' => array(),
       'simplify' => array(),

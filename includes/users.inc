@@ -42,7 +42,6 @@ function pw_profile_setup_permissions() {
   // Authenticated.
   $authenticated = config('user.role.authenticated');
   $permissions = array_merge($permissions, array(
-    'skip CAPTCHA',
     'change own username',
   ));
   $authenticated->set('permissions', $permissions);

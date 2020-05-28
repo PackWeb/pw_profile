@@ -226,20 +226,6 @@ function pw_profile_setup_miscellaneous() {
   config_set('contact.settings', 'contact_default_status', false);
   $system->set('user_pictures', false);
 
-  // Captcha.
-  $config = config('captcha.settings');
-  $config->set('default_challenge', 'recaptcha/reCAPTCHA');
-  $forms = $config->get('captcha_points');
-  $forms['user_register_form']['module'] = 'recaptcha';
-  $forms['user_register_form']['captcha_type'] = 'reCAPTCHA';
-  $forms['contact_site_form'] = array(
-    'form_id' => 'contact_site_form',
-    'module' => 'recaptcha',
-    'captcha_type' => 'reCAPTCHA',
-  );
-  $config->set('captcha_points', $forms);
-  $config->save();
-
   // External links.
   $config = config('extlink.settings');
   $config->set('class', false);
