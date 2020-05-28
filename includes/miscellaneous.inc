@@ -256,9 +256,12 @@ function pw_profile_setup_miscellaneous() {
     'revision',
     'path',
     'redirect',
+    'xmlsitemap',
   )));
   $config->set('users', backdrop_map_assoc(array(
     'format',
+    'picture',
+    'signature',
     'status',
     'contact',
     'redirect',
