@@ -61,17 +61,17 @@ foreach ($projects as $project_type => $project_type_data) {
       foreach ($patch_list as $patch) {
         $filename = basename($patch);
 
-        // Download the patch file.
         if (!file_exists($project_path . '/' . $filename)) {
+          // Download the patch file.
           exec('cd ' . $project_path . ' && wget -q ' . $patch);
-        }
 
-        // Apply the patch.
-        if (file_exists($project_path . '/.git')) {
-          exec('cd ' . $project_path . ' && git apply ' . $filename);
-        }
-        else {
-          exec('cd ' . $project_path . ' && patch -p1 < ' . $filename);
+          // Apply the patch.
+          if (file_exists($project_path . '/.git')) {
+            exec('cd ' . $project_path . ' && git apply ' . $filename);
+          }
+          else {
+            exec('cd ' . $project_path . ' && patch -p1 < ' . $filename);
+          }
         }
       }
     }
