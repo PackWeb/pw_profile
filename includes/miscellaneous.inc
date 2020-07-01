@@ -204,6 +204,9 @@ function pw_profile_setup_miscellaneous() {
   ));
   $config->save();
 
+  // Global redirect.
+  config_set('globalredirect.settings', 'globalredirect_settings.menu_check', true);
+
   // Cron.
   $system->set('cron_safe_threshold', '0');
 
