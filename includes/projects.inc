@@ -49,6 +49,9 @@ $projects = array(
       'menu_trail_by_path' => array(),
       'metatag' => array(
         'metatag_opengraph' => array(),
+        '#patches' => array(
+          'https://patch-diff.githubusercontent.com/raw/backdrop-contrib/metatag/pull/21.patch',
+        ),
       ),
       'minify' => array(),
       'on_the_web' => array(),

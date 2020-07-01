@@ -56,20 +56,22 @@ foreach ($projects as $project_type => $project_type_data) {
     $project_path = $root . '/' . $project_type . '/' . $project;
 
     if (file_exists($project_path)) {
+      echo "Patching $project\n";
+
       foreach ($patch_list as $patch) {
         $filename = basename($patch);
 
         // Download the patch file.
         if (!file_exists($project_path . '/' . $filename)) {
-          exec('cd ' . $project_path . ' && wget ' . $patch);
+          exec('cd ' . $project_path . ' && wget -q ' . $patch);
         }
 
         // Apply the patch.
         if (file_exists($project_path . '/.git')) {
-          exec('git apply ' . $filename);
+          exec('cd ' . $project_path . ' && git apply ' . $filename);
         }
         else {
-          exec('patch -p1 < ' . $filename);
+          exec('cd ' . $project_path . ' && patch -p1 < ' . $filename);
         }
       }
     }
