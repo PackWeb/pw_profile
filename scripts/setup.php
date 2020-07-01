@@ -12,69 +12,67 @@
 $root = __DIR__ . '/../../..';
 require_once __DIR__ . '/../includes/projects.inc';
 
-// Modules.
-$modules['dl'] = array_keys($projects['modules']['contrib']);
-foreach ($projects['modules']['contrib'] as $module => $data) {
-  if (isset($data['#git'])) {
-    $key = array_search($module, $modules['dl']);
-    unset($modules['dl'][$key]);
-    $modules['git'][$module] = $data['#git'];
-  }
-}
-foreach ($modules['dl'] as $module) {
-  if (!file_exists($root . '/modules/' . $module)) {
-    echo "Downloading $module\n";
-    exec('b dl -y ' . $module);
-  }
-}
-foreach ($modules['git'] as $module => $repo) {
-  if (!file_exists($root . '/modules/' . $module)) {
-    echo "Cloning $module\n";
-    exec('git clone ' . $repo);
-  }
-}
+foreach ($projects as $project_type => $project_type_data) {
+  $download = array();
+  $git = array();
+  $patches = array();
+  $list = ($project_type == 'modules') ? $projects[$project_type]['contrib'] : $projects[$project_type];
 
-// Layouts.
-$layouts['dl'] = array_keys($projects['layouts']);
-foreach ($projects['layouts'] as $layout => $data) {
-  if (isset($data['#git'])) {
-    $key = array_search($layout, $layouts['dl']);
-    unset($layouts['dl'][$key]);
-    $layouts['git'][$layout] = $data['#git'];
-  }
-}
-foreach ($layouts['dl'] as $layout) {
-  if (!file_exists($root . '/layouts/' . $layout)) {
-    echo "Downloading $layout\n";
-    exec('b dl -y ' . $layout);
-  }
-}
-foreach ($layouts['git'] as $layout => $repo) {
-  if (!file_exists($root . '/layouts/' . $layout)) {
-    echo "Cloning $layout\n";
-    exec('git clone ' . $repo);
-  }
-}
+  foreach ($list as $project => $data) {
+    // Get projects to download.
+    $download[] = $project;
 
-// Themes.
-$themes['dl'] = array_keys($projects['themes']);
-foreach ($projects['themes'] as $theme => $data) {
-  if (isset($data['#git'])) {
-    $key = array_search($theme, $themes['dl']);
-    unset($themes['dl'][$key]);
-    $themes['git'][$theme] = $data['#git'];
+    // Get git projects to clone.
+    if (isset($data['#git'])) {
+      $key = array_search($project, $download);
+      unset($download[$key]);
+      $git[$project] = $data['#git'];
+    }
+
+    // Get projects to patch.
+    if (isset($data['#patches'])) {
+      $patches[$project] = $data['#patches'];
+    }
   }
-}
-foreach ($themes['dl'] as $theme) {
-  if (!file_exists($root . '/themes/' . $theme)) {
-    echo "Downloading $theme\n";
-    exec('b dl -y ' . $theme);
+
+  // Download projects.
+  foreach ($download as $project) {
+    if (!file_exists($root . '/' . $project_type . '/' . $project)) {
+      echo "Downloading $project\n";
+      exec('b dl -y ' . $project);
+    }
   }
-}
-foreach ($themes['git'] as $theme => $repo) {
-  if (!file_exists($root . '/themes/' . $theme)) {
-    echo "Cloning $theme\n";
-    exec('git clone ' . $repo);
+
+  // Clone git projects.
+  foreach ($git as $project => $repo) {
+    if (!file_exists($root . '/' . $project_type . '/' . $project)) {
+      echo "Cloning $project\n";
+      exec('git clone ' . $repo);
+    }
+  }
+
+  // Patch projects.
+  foreach ($patches as $project => $patch_list) {
+    $project_path = $root . '/' . $project_type . '/' . $project;
+
+    if (file_exists($project_path)) {
+      foreach ($patch_list as $patch) {
+        $filename = basename($patch);
+
+        // Download the patch file.
+        if (!file_exists($project_path . '/' . $filename)) {
+          exec('cd ' . $project_path . ' && wget ' . $patch);
+        }
+
+        // Apply the patch.
+        if (file_exists($project_path . '/.git')) {
+          exec('git apply ' . $filename);
+        }
+        else {
+          exec('patch -p1 < ' . $filename);
+        }
+      }
+    }
   }
 }
 

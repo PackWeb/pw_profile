@@ -176,6 +176,14 @@ function pw_profile_setup_miscellaneous() {
   // Image toolkit.
   $system->set('image_jpeg_quality', '90');
 
+  // Metatag.
+  $config = config('metatag.settings');
+  $config->set('metatag_enable_node__post', FALSE);
+  $config->set('metatag_enable_taxonomy_term', FALSE);
+  $config->set('metatag_enable_user', FALSE);
+  $config->set('cache_output', TRUE);
+  $config->save();
+
   // Date and time formats.
   $config = config('system.date');
   $formats = $config->get('formats');
@@ -205,7 +213,7 @@ function pw_profile_setup_miscellaneous() {
   $config->save();
 
   // Global redirect.
-  config_set('globalredirect.settings', 'globalredirect_settings.menu_check', true);
+  config_set('globalredirect.settings', 'globalredirect_settings.menu_check', TRUE);
 
   // Cron.
   $system->set('cron_safe_threshold', '0');
@@ -215,25 +223,25 @@ function pw_profile_setup_miscellaneous() {
   $config->set('node_pattern', '[node:title]');
   $config->set('node_page_pattern', '[node:menu-link:parents:join-path]/[node:title]');
   $config->set('node_slideshow_image_pattern', 'slideshow/[node:title]');
-  $config->set('transliterate', true);
-  $config->set('reduce_ascii', true);
+  $config->set('transliterate', TRUE);
+  $config->set('reduce_ascii', TRUE);
   $config->save();
 
   // URL redirects.
   config_set('redirect.settings', 'purge_inactive', '31536000');
 
   // URL settings.
-  $system->set('canonical_secure', true);
+  $system->set('canonical_secure', TRUE);
 
   // Account settings.
-  config_set('contact.settings', 'contact_default_status', false);
-  $system->set('user_pictures', false);
+  config_set('contact.settings', 'contact_default_status', FALSE);
+  $system->set('user_pictures', FALSE);
 
   // External links.
   $config = config('extlink.settings');
-  $config->set('class', false);
-  $config->set('mailto_class', false);
-  $config->set('subdomains', false);
+  $config->set('class', FALSE);
+  $config->set('mailto_class', FALSE);
+  $config->set('subdomains', FALSE);
   $config->set('target', '_blank');
   $config->save();
 
