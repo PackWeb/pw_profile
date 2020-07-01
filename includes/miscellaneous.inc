@@ -181,8 +181,35 @@ function pw_profile_setup_miscellaneous() {
   $config->set('metatag_enable_node__post', FALSE);
   $config->set('metatag_enable_taxonomy_term', FALSE);
   $config->set('metatag_enable_user', FALSE);
-  $config->set('cache_output', TRUE);
   $config->save();
+  $config = config('metatag.instance.global');
+  $config->set('storage', 'overridden');
+  $config->clear('config.generator');
+  $config->set('config.content-language.value', 'en');
+  $config->set('config.og:site_name.value', '[site:name]');
+  $config->set('config.og:type.value', 'article');
+  $config->set('config.og:url.value', '[current-page:url:absolute]');
+  $config->set('config.og:title.value', '[current-page:title]');
+  $config->save();
+  $config = config('metatag.instance.global.frontpage');
+  $config->set('storage', 'overridden');
+  $config->clear('config.canonical');
+  $config->clear('config.shortlink');
+  $config->set('config.title.value', '[site:name] | [current-page:pager][site:slogan]');
+  $config->set('config.description.value', '[site:slogan]');
+  $config->set('config.og:type.value', 'website');
+  $config->set('config.og:title.value', '[site:name]');
+  $config->save();
+  $config = config('metatag.instance.node');
+  $config->set('storage', 'overridden');
+  $config->clear('config.title');
+  $config->clear('config.canonical');
+  $config->set('config.description.value', '[node:summary]');
+  $config->set('config.og:type.value', 'article');
+  $config->set('config.og:title.value', '[node:title]');
+  $config->save();
+  config_set('metatag.instance.taxonomy_term', 'disabled', TRUE);
+  config_set('metatag.instance.user', 'disabled', TRUE);
 
   // Date and time formats.
   $config = config('system.date');
