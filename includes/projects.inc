@@ -50,6 +50,7 @@ $projects = array(
       'metatag' => array(
         'metatag_opengraph' => array(),
       ),
+      'minify' => array(),
       'on_the_web' => array(),
       'pathologic' => array(),
       'pw_module' => array(
