@@ -38,6 +38,7 @@ $projects = array(
       'copyright_notice' => array(),
       'devel' => array(),
       'extlink' => array(),
+      'globalredirect' => array(),
       'html5_upload' => array(),
       'imagesloaded' => array(),
       'imgareaselect' => array(),
