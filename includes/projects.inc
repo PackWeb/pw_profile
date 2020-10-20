@@ -53,7 +53,6 @@ $projects = array(
           'https://patch-diff.githubusercontent.com/raw/backdrop-contrib/metatag/pull/21.patch',
         ),
       ),
-      'minify' => array(),
       'on_the_web' => array(),
       'pathologic' => array(),
       'pw_module' => array(
